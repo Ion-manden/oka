@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: test
+      PGDATA: /pg-source-data
+    ports:
+      - 5432:5432
