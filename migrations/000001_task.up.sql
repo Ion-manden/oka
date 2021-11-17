@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXIST task (
+	id BIGSERIAL PRIMARY KEY,
+	title VARCHAR ( 50 ) NOT NULL,
+  status BIGINT NOT NULL,
+	created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+	updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE OR REPLACE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+  BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+  END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_updated_timestamp
+BEFORE UPDATE ON task
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();

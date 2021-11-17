@@ -28,8 +28,8 @@ func main() {
 		})
 	})
 	r.GET("/task/*", func(c *gin.Context) {
-		fmt.Sprintf(c.Params[0])
-		id := c.Param("id")
+		id := c.Request.URL.Path
+		// id := c.Param("id")
 		idInt, err := strconv.Atoi(id)
 		if err != nil {
 			c.Error(err)
