@@ -19,7 +19,7 @@ spec:
         app: api-deployment
     spec:
       containers:
-      - image: local/oka-api
+      - image: ghcr.io/ion-manden/oka-demo-api:latest
         name: api
         resources: {}
 
