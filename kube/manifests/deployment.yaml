@@ -20,6 +20,7 @@ spec:
     spec:
       containers:
       - image: ghcr.io/ion-manden/oka-demo-api:latest
+        imagePullPolicy: Always
         name: api
         resources: {}
 
